@@ -1,0 +1,6 @@
+{
+  "name": "Zof Group",
+  "description": "Premium multi-service roofing, architectural structural, solar, and waterproofing solutions by Zof Group.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  /* Light Neutral background - Deep Warm Cream */
+  --color-slate-50: #F3E5C8;
+  --color-offwhite: #F3E5C8;
+  
+  /* Core light color elements (card & module backgrounds) - Rich Soft Ivory Cream */
+  --color-white: #FFFDF6; 
+  
+  /* Warm Earth Charcoal / Espresso as Secondary and its premium variations */
+  --color-slate-950: #221B13;
+  --color-slate-900: #2C2219;
+  --color-slate-800: #3D3023;
+  --color-slate-700: #4E3F30;
+  --color-slate-650: #604F3E;
+  --color-slate-600: #74614E;
+  --color-slate-550: #86725F;
+  --color-slate-500: #98806A;
+  --color-slate-555: #98806A;
+  --color-slate-400: #B59E87;
+  --color-slate-350: #C9B59D;
+  --color-slate-300: #DECBB5;
+  --color-slate-250: #EADDCB;
+  --color-slate-220: #EFE4D4;
+  --color-slate-205: #F3E5C8;
+  --color-slate-200: #DEC096;
+  --color-slate-150: #FFFDF6;
+  --color-slate-100: #FAF3E0;
+  
+  /* Map stone classes to match warm deep cream earthy theme */
+  --color-stone-50: #FAF3E0;
+  --color-stone-100: #F3E5C8;
+  --color-stone-150: #FFFDF6;
+  --color-stone-200: #DEC096;
+  --color-stone-300: #D1B185;
+  --color-stone-400: #C09F74;
+  --color-stone-500: #98806A;
+  --color-stone-550: #86725F;
+  --color-stone-600: #74614E;
+  --color-stone-700: #4E3F30;
+  --color-stone-800: #3D3023;
+  --color-stone-850: #2C2219;
+  --color-stone-900: #221B13;
+
+  /* Construction Amber (#FF9F1C) as Accent and its utility options */
+  --color-amber-50: #FFF9F2;
+  --color-amber-100: #FDF1DF;
+  --color-amber-200: #FBE4C4;
+  --color-amber-300: #F7D2A1;
+  --color-amber-400: #F3BC76;
+  --color-amber-500: #E58E1A; /* Refined Warm Amber */
+  --color-amber-600: #C87A14;
+  --color-amber-700: #AA660D;
+  --color-amber-850: #25221E;
+  
+  /* Primary Safety Blue (#0073D7) and hover options/accents */
+  --color-blue-50: #F2F7FD;
+  --color-blue-150: #D6E8FA;
+  --color-blue-200: #ADCFF7;
+  --color-blue-400: #529CE3; 
+  --color-blue-500: #1D6BBA; /* Refined Deep Royal Blue for Cream contrast */
+  --color-blue-600: #1D6BBA;
+  --color-blue-700: #15518F;
+  --color-blue-800: #0D3966;
+  --color-blue-900: #2C2824; /* Match Deep Earth Charcoal */
+  --color-blue-950: #25221E;
+  
+  /* Custom offset values to keep elements polished and architectural */
+  --color-slate-55: #FAF5EC;
+  --color-slate-555: #988C80;
+}
+
+/* Hide print root in normal screen mode */
+#print-root {
+  display: none !important;
+}
+
+/* Print and PDF Export Optimization */
+@media print {
+  /* Prevent background clipping or split-page overflows */
+  html, body {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow: visible !important;
+    background-color: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide the standard app root when printing */
+  body.is-printing #root {
+    display: none !important;
+  }
+
+  /* Show the print root instead */
+  body.is-printing #print-root {
+    display: block !important;
+    background-color: #ffffff !important;
+    color: #1c1917 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    position: relative !important;
+  }
+
+  /* Print Page Container for 1 or multi-page layouts */
+  .print-page {
+    width: 100% !important;
+    min-height: 100vh !important;
+    padding: 3mm 3mm !important;
+    box-sizing: border-box !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    background-color: #ffffff !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+
+  .print-page:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  /* Ensure the printed cloned area fits the page cleanly */
+  #print-root #printable-document-area-clone,
+  #print-root #terms-conditions-sheet-clone,
+  #print-root .printable-page-clone {
+    background-color: #ffffff !important;
+    color: #1c1917 !important;
+    border: 2px solid #1c1917 !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    min-height: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 12px 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Prevent elements inside clone from awkward splitting */
+  #print-root * {
+    page-break-inside: avoid !important;
+    overflow: visible !important;
+  }
+
+  /* Compact spacing for print */
+  #print-root table th,
+  #print-root table td {
+    padding: 1.2mm 1.8mm !important;
+    font-size: 10px !important;
+    line-height: 1.15 !important;
+  }
+
+  #print-root h2 {
+    font-size: 14px !important;
+    line-height: 1.15 !important;
+  }
+  
+  #print-root h3 {
+    font-size: 12px !important;
+    line-height: 1.15 !important;
+  }
+
+  #print-root p,
+  #print-root span,
+  #print-root div {
+    font-size: 10px !important;
+    line-height: 1.25 !important;
+  }
+
+  #print-root .text-xs {
+    font-size: 8.5px !important;
+  }
+
+  #print-root .text-sm {
+    font-size: 10px !important;
+  }
+
+  #print-root #printable-document-area-clone {
+    padding: 8px 12px !important;
+  }
+
+  #print-root #printable-document-area-clone hr,
+  #print-root #printable-document-area-clone .my-3,
+  #print-root #printable-document-area-clone .my-4,
+  #print-root #printable-document-area-clone .py-4 {
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+  }
+
+  /* Force watermarks and seals */
+  #print-root .absolute {
+    position: absolute !important;
+  }
+
+  /* Ensure text is completely high contrast dark color for crisp reading, while forcing exact colors for SVGs and gradients */
+  #print-root * {
+    color: #1c1917 !important;
+    border-color: #1c1917 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Make sure images and logos are printed with original high fidelity colors and gradients */
+  #print-root img {
+    display: inline-block !important;
+    visibility: visible !important;
+    max-width: 100% !important;
+    height: auto !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  #print-root .text-red-700 {
+    color: #b91c1c !important;
+  }
+
+  #print-root .bg-\[\#10223D\] {
+    background-color: #10223D !important;
+    color: #ffffff !important;
+  }
+
+  #print-root .bg-\[\#10223D\] * {
+    color: #ffffff !important;
+  }
+
+  #print-root .bg-\[\#10223D\] .text-amber-300 {
+    color: #fcd34d !important;
+  }
+
+  /* Golden Shield Certificate Print Optimization */
+  #print-root #print-cert-clone {
+    border: 3px solid #d97706 !important;
+    border-radius: 12px !important;
+    padding: 16px 20px !important;
+    background: #ffffff !important;
+  }
+
+  #print-root #print-cert-clone * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 6mm 6mm;
+  }
+}
+
+/* Chrome, Safari, Edge, Opera: Hide number spinners to prevent vertical line/colon artifacts on print */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield !important;
+}
